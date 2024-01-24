@@ -1,7 +1,7 @@
 // import React, { useState } from 'react';
 // import Timer from './timer';
 // import {ReadTwitchMessages} from './twitchConnection';
-import Picture1 from './picture1';
+import Menu from './menu';
 
 export default function Main(){
   // const [timer, setTimer] = useState(null);
@@ -14,7 +14,7 @@ export default function Main(){
       <>
         {/* <ReadTwitchMessages onTimerSet={setTimer} />
         {timer && <Timer maxDuration="30" onEnd={timerEnd} /> } */}
-        <Picture1 title='Chaussons aux pommes' />
+        <Menu title='Chaussons aux pommes' />
       </>
   );
 }
