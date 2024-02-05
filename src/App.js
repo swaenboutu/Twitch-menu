@@ -1,20 +1,26 @@
-// import React, { useState } from 'react';
-// import Timer from './timer';
-// import {ReadTwitchMessages} from './twitchConnection';
+import React, { useState } from 'react';
+import {ReadTwitchMessages} from './twitchConnection';
 import Menu from './menu';
+import { displayMenuDuration } from './consts/variables';
 
 export default function Main(){
-  // const [timer, setTimer] = useState(null);
+  const [displayMenu, setDisplayMenu] = useState(false);
 
-  // function timerEnd(timerDuration){
-  //   setTimer(timerDuration);
-  // }
-
+  function messageReceived(){
+    setDisplayMenu(true);
+    setInterval(() => {
+      setDisplayMenu(false);
+    }, displayMenuDuration);
+  }
+    
   return (
       <>
-        {/* <ReadTwitchMessages onTimerSet={setTimer} />
-        {timer && <Timer maxDuration="30" onEnd={timerEnd} /> } */}
-        <Menu title='Chaussons aux pommes' />
+        {<ReadTwitchMessages onTimerSet={messageReceived} />}
+        {displayMenu ?
+          <>
+          <Menu />
+          </>
+        : null}
       </>
   );
 }

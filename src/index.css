@@ -1,4 +1,29 @@
-.title{
+@font-face {
+    font-family: 'heina';
+    src: url('./assets/Heina_s-hurry.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: 'appleSpice';
+    src: url('./assets/AppleSpice.ttf') format('truetype');
+}
+
+body {
     color:white;
+}
+
+.title {
     text-align: center;
+    font-size: 7em;
+    font-family: 'appleSpice';
+    width:80%;
+    margin-left: 110px;
+}
+
+.date {
+    font-family: 'heina';
+    text-align: right;
+    font-size: 2em;
+    position: absolute;
+    left: 150px;
 }

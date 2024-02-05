@@ -4,7 +4,8 @@ const channels = [
     "redswaen"
 ];
 
-// 
-const rewardsId = {"RewardCustomTimerId": "0a7b232a-2588-4dac-bea0-777204f08e08"};
+const displayMenuDuration = 4000;
 
-export {channels, rewardsId};
+const local = 'fr';
+
+export {channels, displayMenuDuration, local};
