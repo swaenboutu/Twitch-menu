@@ -43,10 +43,7 @@ function Menu() {
   };
   
   var menuInfos = undefined;
-  // var menus = null;
-  // readTextFile("./test.json", function(menuInfos){
-  //   menus = JSON.parse(menuInfos);
-  // });
+  
   menuInfos = menus.find(({ date }) => date === Moment().format("YYYY-MM-DD"));
 
   if(menuInfos === undefined){
