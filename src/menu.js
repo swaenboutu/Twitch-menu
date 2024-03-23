@@ -1,26 +1,25 @@
 import { useState, useEffect } from 'react';
 import background from './assets/background.png';
 import Moment from 'moment';
-import menus from './consts/menus';
 import 'moment/locale/fr';
-import { local } from './consts/variables';
-
-function readTextFile(file, callback) {
-  var rawFile = new XMLHttpRequest();
-  rawFile.overrideMimeType("application/json");
-  rawFile.open("GET", file, true);
-  
-  rawFile.onreadystatechange = function() {
-      if (rawFile.readyState === 4 && rawFile.status === "200") {
-          callback(rawFile.responseText);
-      }
-  }
-  console.log("rawFile", rawFile);
-  rawFile.send(null);
-}
-
+import { local, githubGistsinfos } from './consts/variables';
 
 function Menu() {
+  const url = `https://api.github.com/gists/${githubGistsinfos.UUID}`;
+  const [menus, setMenus] = useState();
+    useEffect(() => {
+      fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      setMenus(JSON.parse(data.files[githubGistsinfos.filename].content));
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  }, []);
+
   const [imageDimensions, setImageDimensions] = useState({});
   
   useEffect(() => {
@@ -43,8 +42,9 @@ function Menu() {
   };
   
   var menuInfos = undefined;
-  
-  menuInfos = menus.find(({ date }) => date === Moment().format("YYYY-MM-DD"));
+  if(menus !== undefined){
+    menuInfos = menus.find(({ date }) => date === Moment().format("YYYY-MM-DD"));
+  }
 
   if(menuInfos === undefined){
     menuInfos = {
