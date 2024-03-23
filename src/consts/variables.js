@@ -6,7 +6,7 @@ const channels = [
 // Url Of the Github Gists file containing all the menu
 const githubGistsinfos = {
     "UUID":``, 
-    "filename" : "menus.js"
+    "filename" : "menus.json"
 };
 
 // Duration to display the menu
